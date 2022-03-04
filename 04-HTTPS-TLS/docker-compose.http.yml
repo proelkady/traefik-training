@@ -26,22 +26,20 @@ services:
      labels:
         - "traefik.enable=true"
         # services
-        - "traefik.http.services.catapp-secure.loadbalancer.server.port=5000"
         - "traefik.http.services.catapp.loadbalancer.server.port=5000"
         # catapp router
         - "traefik.http.routers.catapp.rule=Host(`tech-takeaway.com`)"
         - "traefik.http.routers.catapp.service=catapp"
-        - "traefik.http.routers.catapp-secure.service=catapp"
-        - "traefik.http.routers.catapp.entrypoints=web"
-        # - "traefik.http.routers.catapp.tls.certresolver=myresolver"
-        - "traefik.http.routers.catapp.middlewares=redirectscheme-to-https"
+        - "traefik.http.routers.catapp.entrypoints=websecure"
+        - "traefik.http.routers.catapp.tls.certresolver=myresolver"
+        # - "traefik.http.routers.catapp.middlewares=redirectscheme-to-https"
         # cataoo-secure router
-        - "traefik.http.routers.catapp-secure.rule=Host(`tech-takeaway.com`)"
-        - "traefik.http.routers.catapp-secure.entrypoints=websecure"
-        - "traefik.http.routers.catapp-secure.tls.certresolver=myresolver"
-        - "traefik.http.routers.catapp-secure.middlewares=ratelimit,my-compress"
+        # - "traefik.http.routers.catapp-secure.rule=Host(`tech-takeaway.com`)"
+        # - "traefik.http.routers.catapp-secure.entrypoints=websecure"
+        # - "traefik.http.routers.catapp-secure.tls.certresolver=myresolver"
+        - "traefik.http.routers.catapp.middlewares=ratelimit,my-compress"
         # Middlewares
         - "traefik.http.middlewares.my-compress.compress=true"
         - "traefik.http.middlewares.ratelimit.ratelimit.average=5"
-        - "traefik.http.middlewares.redirectscheme-to-https.redirectscheme.scheme=https"
-        - "traefik.http.middlewares.redirectscheme-to-https.redirectscheme.permanent=true"
+        # - "traefik.http.middlewares.redirectscheme-to-https.redirectscheme.scheme=https"
+        # - "traefik.http.middlewares.redirectscheme-to-https.redirectscheme.permanent=true"
