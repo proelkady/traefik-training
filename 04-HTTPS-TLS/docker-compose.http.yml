@@ -30,7 +30,7 @@ services:
         - "traefik.http.routers.catapp.service=catapp"
         - "traefik.http.routers.catapp.entrypoints=web"
         - "traefik.http.routers.catapp.tls.certresolver=myresolver"
-        - "traefik.http.routers.catapp.middlewares=my-redirectscheme"
+        - "traefik.http.routers.catapp.middlewares=test-redirectscheme"
         - "traefik.http.routers.catapp-secure.rule=Host(`tech-takeaway.com`)"
         - "traefik.http.routers.catapp-secure.entrypoints=websecure"
         - "traefik.http.routers.catapp-secure.tls.certresolver=myresolver"
@@ -39,6 +39,5 @@ services:
         - "traefik.http.middlewares.my-compress.compress=true"
         - "traefik.http.middlewares.ratelimit.ratelimit.average=5"
     # Redirect Scheme HTTP -> HTTPS
-        - "traefik.http.middlewares.my-redirectscheme.redirectscheme.scheme=https"
-        - "traefik.http.middlewares.my-redirectscheme.redirectscheme.permanent=true"
-        - "traefik.http.middlewares.my-redirectscheme.redirectscheme.port=443"
+        - "traefik.http.middlewares.test-redirectscheme.redirectscheme.scheme=https"
+        - "traefik.http.middlewares.test-redirectscheme.redirectscheme.permanent=true"
