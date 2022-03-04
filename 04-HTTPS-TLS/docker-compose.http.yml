@@ -29,9 +29,9 @@ services:
         - "traefik.http.services.catapp-secure.loadbalancer.server.port=5000"
         # catapp router
         - "traefik.http.routers.catapp.rule=Host(`tech-takeaway.com`)"
-        - "traefik.http.routers.catapp.service=catapp"
+        # - "traefik.http.routers.catapp.service=catapp"
         - "traefik.http.routers.catapp.entrypoints=web"
-        - "traefik.http.routers.catapp.tls.certresolver=myresolver"
+        # - "traefik.http.routers.catapp.tls.certresolver=myresolver"
         - "traefik.http.routers.catapp.middlewares=redirectscheme-to-https"
         # cataoo-secure router
         - "traefik.http.routers.catapp-secure.rule=Host(`tech-takeaway.com`)"
