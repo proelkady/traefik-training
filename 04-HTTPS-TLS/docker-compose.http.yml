@@ -25,12 +25,15 @@ services:
      image: mikesir87/cats:1.0
      labels:
         - "traefik.enable=true"
-        - "traefik.http.services.catapp.loadbalancer.server.port=5000"
+        # services
+        - "traefik.http.services.catapp-secure.loadbalancer.server.port=5000"
+        # catapp router
         - "traefik.http.routers.catapp.rule=Host(`tech-takeaway.com`)"
         - "traefik.http.routers.catapp.service=catapp"
         - "traefik.http.routers.catapp.entrypoints=web"
         - "traefik.http.routers.catapp.tls.certresolver=myresolver"
-        - "traefik.http.routers.catapp.middlewares=test-redirectscheme"
+        - "traefik.http.routers.catapp.middlewares=redirectscheme-to-https"
+        # cataoo-secure router
         - "traefik.http.routers.catapp-secure.rule=Host(`tech-takeaway.com`)"
         - "traefik.http.routers.catapp-secure.entrypoints=websecure"
         - "traefik.http.routers.catapp-secure.tls.certresolver=myresolver"
@@ -38,6 +41,5 @@ services:
         # Middlewares
         - "traefik.http.middlewares.my-compress.compress=true"
         - "traefik.http.middlewares.ratelimit.ratelimit.average=5"
-    # Redirect Scheme HTTP -> HTTPS
-        - "traefik.http.middlewares.test-redirectscheme.redirectscheme.scheme=https"
-        - "traefik.http.middlewares.test-redirectscheme.redirectscheme.permanent=true"
+        - "traefik.http.middlewares.redirectscheme-to-https.redirectscheme.scheme=https"
+        - "traefik.http.middlewares.redirectscheme-to-https.redirectscheme.permanent=true"
