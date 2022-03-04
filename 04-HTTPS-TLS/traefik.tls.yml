@@ -40,3 +40,4 @@ certificatesResolvers:
         true
         # # used during the challenge
         # entryPoint: web
+ping: {}
