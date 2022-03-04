@@ -34,8 +34,9 @@ entryPoints:
 certificatesResolvers:
   myresolver:
     acme:
-      email: your_email@example.com  
+      email: pro.elkady@gmail.com
       storage: acme.json
-      tlsChallenge: true
+      tlsChallenge:
+        true
         # # used during the challenge
         # entryPoint: web
