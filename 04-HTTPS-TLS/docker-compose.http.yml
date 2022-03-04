@@ -41,3 +41,4 @@ services:
     # Redirect Scheme HTTP -> HTTPS
         - "traefik.http.middlewares.my-redirectscheme.redirectscheme.scheme=https"
         - "traefik.http.middlewares.my-redirectscheme.redirectscheme.permanent=true"
+        - "traefik.http.middlewares.my-redirectscheme.redirectscheme.port=443"
